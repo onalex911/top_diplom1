@@ -9,4 +9,6 @@ import java.util.List;
 public interface BJGroupRepository extends JpaRepository<BjGroup,Integer> {
     @Query(value="SELECT * FROM bj_groups WHERE active=true",nativeQuery = true)
     List<BjGroup> findAllActive();
+
+    String findByGroupId(int groupId);
 }

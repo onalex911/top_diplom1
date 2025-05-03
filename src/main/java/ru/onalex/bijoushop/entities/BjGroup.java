@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.List;
+
 @Entity
 @Table(name="bj_groups")
 @Data
@@ -29,4 +31,11 @@ public class BjGroup {
     @NaturalId
     private Integer groupId; //legacy - значение id группы, используется в ссылках и назв. изображений групп
 
+//    @ManyToMany
+//    @JoinTable(
+//            name="products_groups",
+//            joinColumns = @JoinColumn(name="group_id"),
+//            inverseJoinColumns = @JoinColumn(name="product_id")
+//    )
+//    private List<BjProduct> products; //список товаров, принадлежащих одной группе
 }
