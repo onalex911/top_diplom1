@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name="bj_groups")
@@ -22,9 +23,10 @@ public class BjGroup {
     @NotBlank(message = "Имя группы не может быть пустым!")
     private String groupName;
 
-    @Column(name="group_img_path",columnDefinition = "varchar(20)")
+    @Column(name="group_id",columnDefinition = "integer")
     @NotNull()
-    @NotBlank(message = "Изображение группы должно присутствовать!")
-    private String groupImgPath;
+    @NotBlank(message = "Внутренний номер группы должен присутствовать!")
+    @NaturalId
+    private Integer groupId; //legacy - значение id группы, используется в ссылках и назв. изображений групп
 
 }
