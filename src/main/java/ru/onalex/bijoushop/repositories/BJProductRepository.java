@@ -18,4 +18,6 @@ public interface BJProductRepository extends JpaRepository<BjProduct,Integer>, J
             ") on p.inner_id = pg.product_id " +
             "WHERE g.group_id = :groupId and p.active=true",nativeQuery = true)
     List<BjProduct> findBjProductsByGroupId(int groupId);
+
+    BjProduct findByProductAlias(String productAlias);
 }

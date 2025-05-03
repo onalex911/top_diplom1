@@ -51,7 +51,20 @@ public class HomeController {
         String groupName = bjGroupRepository.findByGroupId(groupId).getGroupName();
         model.addAttribute("group_name",groupName);
         model.addAttribute("products",products);
+        model.addAttribute("group_id",groupId);
         return "bj_products";
+//        return getBjGroupsService(model);
+    }
+    @GetMapping("/{group_id}/{alias}")
+    public String getBjProduct(
+            @PathVariable(name="group_id") int groupId,
+            @PathVariable(name="alias") String alias,
+            Model model) {
+        BjProduct product = bjProductRepository.findByProductAlias(alias);
+        String groupName = bjGroupRepository.findByGroupId(groupId).getGroupName();
+        model.addAttribute("group_name",groupName);
+        model.addAttribute("product",product);
+        return "bj_product";
 //        return getBjGroupsService(model);
     }
 
