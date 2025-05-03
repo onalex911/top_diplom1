@@ -19,7 +19,7 @@ public class BjProduct {
     @NotNull()
     @NotBlank(message = "Внутренний номер товара должен присутствовать!")
     @NaturalId
-    private Integer groupId; //legacy - значение id товара, используется в ссылках и назв. изображений товаров@Column(name="inner_id",columnDefinition = "integer")
+    private Integer innerId; //legacy - значение id товара, используется в ссылках и назв. изображений товаров
 
     @Column(name="articul",columnDefinition = "varchar(50)")
     @NotNull()

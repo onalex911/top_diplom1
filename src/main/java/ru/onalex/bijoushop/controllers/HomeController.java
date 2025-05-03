@@ -29,14 +29,14 @@ public class HomeController {
         return "bj_groups";
 //        return getBjGroupsService(model);
     }
-//    @GetMapping("/groups/{group_id}")
-//    public String getBjGroups(@PathVariable(name="group_id") int groupId, Model model) {
-//        List<BjProduct> products = bjProductRepository.findAllActive();
-//        String groupName = bjGroupRepository.findByGroupId(groupId);
-//        model.addAttribute("group_name",groupName);
-//        model.addAttribute("products",products);
-//        return "bj_products";
-////        return getBjGroupsService(model);
-//    }
+    @GetMapping("/groups/{group_id}")
+    public String getBjGroups(@PathVariable(name="group_id") int groupId, Model model) {
+        List<BjProduct> products = bjProductRepository.findBjProductsByGroupId(groupId);
+        String groupName = bjGroupRepository.findByGroupId(groupId).getGroupName();
+        model.addAttribute("group_name",groupName);
+        model.addAttribute("products",products);
+        return "bj_products";
+//        return getBjGroupsService(model);
+    }
 
 }

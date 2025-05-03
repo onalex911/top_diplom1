@@ -16,14 +16,14 @@
         <h2 th:text="${group_name}"></h2>
     </div>
 <div class="output">
-<!--    <ul>-->
-<!--        <li th:each="t : ${products}">-->
-<!--            <a th:href="@{'./' + ${t.productAlias}}">-->
-<!--                <image th:src="'/images/' + ${t.innerId} + '.jpg'" style="width:150px"/>-->
-<!--                <div class="product_name" th:text="${t.productName}"></div>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--    </ul>-->
+    <ul>
+        <li th:each="t : ${products}">
+            <a th:href="@{'./' + ${t.productAlias}}">
+                <image th:src="'/images/' + ${t.innerId} + '_b.jpg'" style="width:150px"/>
+                <div class="product_name" th:text="${t.productName}"></div>
+            </a>
+        </li>
+    </ul>
 
 </div>
 </div>
