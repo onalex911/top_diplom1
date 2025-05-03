@@ -6,7 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="bj_groups")
@@ -31,6 +33,8 @@ public class BjGroup {
     @NaturalId
     private Integer groupId; //legacy - значение id группы, используется в ссылках и назв. изображений групп
 
+    @OneToMany(mappedBy = "bjGroup", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductGroup> productGroupSet = new HashSet<>();
 //    @ManyToMany
 //    @JoinTable(
 //            name="products_groups",

@@ -17,8 +17,8 @@
 <div class="output">
     <ul>
         <li th:each="t : ${groups}">
-            <a th:href="@{'./' + ${t.groupId}}">
-                <image th:src="'/images/' + ${t.groupId} + '.jpg'" style="width:150px"/>
+            <a th:href="@{'/' + ${t.groupId}}">
+                <image th:src="'./images/' + ${t.groupId} + '.jpg'" style="width:150px"/>
                 <div class="group_name" th:text="${t.groupName}"></div>
             </a>
         </li>

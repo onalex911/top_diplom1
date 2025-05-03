@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="bj_products")
 @Data
@@ -70,6 +73,8 @@ public class BjProduct {
         this.price = Math.toIntExact(Math.round(price * 100));
     }
 
+    @OneToMany(mappedBy = "bjProduct", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductGroup> productGroupSet = new HashSet<>();
     //на случай, если понадобится вывести список групп, которым принадлежит товар
 //    @ManyToMany
 //    @JoinTable(
