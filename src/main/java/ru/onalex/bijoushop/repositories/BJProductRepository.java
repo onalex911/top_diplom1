@@ -13,7 +13,9 @@ public interface BJProductRepository extends JpaRepository<BjProduct,Integer>, J
     @Query(value="SELECT * FROM bj_products WHERE active=true",nativeQuery = true)
     List<BjProduct> findAllActive();
 
-    List<BjProduct> findByGroupId(int groupId);
-
-
+    @Query(value="SELECT p.* FROM bj_products p RIGHT JOIN (" +
+            "products_groups pg RIGHT JOIN bj_groups g on g.group_id = pg.group_id" +
+            ") on p.inner_id = pg.product_id " +
+            "WHERE g.group_id = :groupId and p.active=true",nativeQuery = true)
+    List<BjProduct> findBjProductsByGroupId(int groupId);
 }

@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 //@RequiredArgsConstructor
 public class ProductService {
 
-        private final GroupProductRepository groupProductRepository;
-
-        public ProductService(GroupProductRepository groupProductRepository) {
-            this.groupProductRepository = groupProductRepository;
-        }
-
-        // Получить товары по ID категории
-        public List<BjProduct> getProductsByGroupId(Integer groupId) {
-            return groupProductRepository.findByGroupId(groupId)
-                    .stream()
-                    .map(ProductGroup::getBjProduct)
-                    .collect(Collectors.toList());
-        }
+//        private final GroupProductRepository groupProductRepository;
+//
+//        public ProductService(GroupProductRepository groupProductRepository) {
+//            this.groupProductRepository = groupProductRepository;
+//        }
+//
+//        // Получить товары по ID категории
+//        public List<BjProduct> getProductsByGroupId(Integer groupId) {
+//            return groupProductRepository.findByGroupId(groupId)
+//                    .stream()
+//                    .map(ProductGroup::getBjProduct)
+//                    .collect(Collectors.toList());
+//        }
 
 }

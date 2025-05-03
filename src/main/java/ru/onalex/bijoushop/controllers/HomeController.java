@@ -20,11 +20,12 @@ import java.util.List;
 //@RequiredArgsConstructor
 public class HomeController {
     private BJGroupRepository bjGroupRepository;
-    private final ProductService productService;
+    private BJProductRepository bjProductRepository;
+//    private final ProductService productService;
 
-    public HomeController(ProductService productService) {
-        this.productService = productService;
-    }
+//    public HomeController(ProductService productService) {
+//        this.productService = productService;
+//    }
 
     @Autowired
     public void setBjGroupRepository(BJGroupRepository bjGroupRepository) {
@@ -32,6 +33,7 @@ public class HomeController {
     }
     @Autowired
     public void setBjProductRepository(BJProductRepository bjProductRepository) {
+        this.bjProductRepository = bjProductRepository;
     }
 
 
@@ -45,8 +47,8 @@ public class HomeController {
     }
     @GetMapping("/{group_id}")
     public String getBjGroups(@PathVariable(name="group_id") int groupId, Model model) {
-        List<BjProduct> products = productService.getProductsByGroupId(groupId);
-        String groupName = bjGroupRepository.findByGroupId(groupId).getGroupName().toString();
+        List<BjProduct> products = bjProductRepository.findBjProductsByGroupId(groupId);
+        String groupName = bjGroupRepository.findByGroupId(groupId).getGroupName();
         model.addAttribute("group_name",groupName);
         model.addAttribute("products",products);
         return "bj_products";
